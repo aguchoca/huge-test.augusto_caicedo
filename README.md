@@ -11,7 +11,8 @@ Run
    
    Run the huge_test.php by running 
 
-   ```php  huge_test.php
+   ```
+   php  huge_test.php
    ``` 
 
    in the bash or CLI
