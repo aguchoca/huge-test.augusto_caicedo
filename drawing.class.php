@@ -1,10 +1,10 @@
 <?php
 
 class Drawing {
-    private $allowed_commands = ["C", "L", "R", "B", "Q"]; 
-    private $canvas = [];  // canvas width and height
-    private $command = "";      // single letter code for draw command currently being executed
+    private $allowed_commands = ["C", "L", "R", "B", "Q"];
+    private $canvas = [];  
     private $pixels = [];  
+    private $command = "";
     
    /**
     * function that listen CLI input
@@ -49,27 +49,20 @@ class Drawing {
         return true;
     }
 
-    /**
-    * "Bucket Fill" an area on the canvas recursively startng from specified point
-    *
-    * @param    int     $x  coordinate start point
-    * @param    int     $y  coordinate start point
-    * @param    int     $color  character used to represent the fill "color"
-    */
-    private function floodFill($x, $y, $color) {
+     private function floodFill($x, $y, $color) {
         if($x < 1 || $y < 1 || $x > $this->canvas[0] || $y > $this->canvas[1])
             return;
-        $color = "\033[31m * \033[0m"
+
         if(isset($this->pixels[$x][$y]))
             return;
 
         $this->pixels[$x][$y] = $color;
 
-        // call this method again to check more pixels in all 4 directions, this may use too much memory in which case there are other ways to do it: http://en.wikipedia.org/wiki/Flood_fill
-        $this->floodFill($x-1, $y, $color);
+        // http://en.wikipedia.org/wiki/Flood_fill - this fills in all directions with boundaries.
         $this->floodFill($x+1, $y, $color);
-        $this->floodFill($x, $y-1, $color);
+        $this->floodFill($x-1, $y, $color);
         $this->floodFill($x, $y+1, $color);
+        $this->floodFill($x, $y-1, $color);
 
     }
 
@@ -100,7 +93,7 @@ class Drawing {
                 } elseif(empty($this->canvas)) {
                     $output = "Please type C for new canvas." . PHP_EOL;
                 } elseif($this->command == "L") {
-                    if($this->canvas !== "") {
+                    if($this->canvas == "") {
                         $output = "First create a canvas." .PHP_EOL;
                     } else {
                         if(!$this->drawLine($args))
