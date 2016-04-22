@@ -3,11 +3,10 @@ Huge Test
 
   Drawing tool coding challenge in PHP for Huge (Augusto Caicedo)
 
-
+  **Attention : PHP > 5.4 is necessary**
 Run
 ---
 
-   **Note: PHP > 5.4 is neccessary**
    
    Run the huge_test.php by running 
 
