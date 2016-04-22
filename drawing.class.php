@@ -1,6 +1,6 @@
 <?php
 
-class Draw {
+class Drawing {
     private $allowed_commands = ["C", "L", "R", "B", "Q"]; 
     private $canvas = [];  // canvas width and height
     private $command = "";      // single letter code for draw command currently being executed

@@ -1,7 +1,7 @@
 <?php
 
-include('draw.class.php');
-$draw = new Draw();
+include 'drawing.class.php';
+$draw = new Drawing();
 $draw->cliListener();
 
 ?>
