@@ -7,13 +7,14 @@ Huge Test
 Run
 ---
 
-   **Note: PHP > 5.4 is required**
+   **Note: PHP > 5.4 is neccessary**
    
    Run the huge_test.php by running 
 
    ```
    php  huge_test.php
+
    ``` 
 
-   in the bash or CLI
+   in  bash or CLI
 
