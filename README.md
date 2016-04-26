@@ -14,6 +14,10 @@ Run
    php  huge_test.php
 
    ``` 
-
+   For Unit testing run
+   
+   ```
+   php unit_test.php
+   ```
    in  bash or CLI
 
