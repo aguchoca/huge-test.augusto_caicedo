@@ -2,6 +2,6 @@
 
 include 'drawing.class.php';
 $draw = new Drawing();
-$draw->cliListener();
+$draw->cliListen();
 
 ?>
