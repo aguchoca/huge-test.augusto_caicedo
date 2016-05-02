@@ -32,11 +32,11 @@ class Drawing {
         if($prop[1] == $prop[3]) { 
             $line = range($prop[0], $prop[2]);
             foreach($line as $x)
-                $this->pixels[$x][$prop[1]] = $pattern;
+                $this->canvas[$x][$prop[1]] = $pattern;
         } elseif($prop[0] == $prop[2]) { 
             $line = range($prop[1], $prop[3]);
             foreach($line as $y)
-                $this->pixels[$prop[0]][$y] = $pattern;
+                $this->canvas[$prop[0]][$y] = $pattern;
         } else {
             return false;
         }
@@ -47,10 +47,10 @@ class Drawing {
         if($x < 1 || $y < 1 || $x > $this->canvas_size[0] || $y > $this->canvas_size[1])
             return;
 
-        if(isset($this->pixels[$x][$y]))
+        if(isset($this->canvas[$x][$y]))
             return;
 
-        $this->pixels[$x][$y] = $color; // Sets color
+        $this->canvas[$x][$y] = $color; // Sets color
         $this->colorFill($x+1, $y, $color);
         $this->colorFill($x-1, $y, $color);
         $this->colorFill($x, $y+1, $color);
@@ -69,7 +69,7 @@ class Drawing {
       $prop = explode(" ", substr($input, 2));
 
     if($this->command == "C") {
-      $this->pixels = [];
+      $this->canvas = [];
       $this->canvas_size = array_slice($prop, 0, 2);
         if(count($prop) < 2) {
             $output = "Canvas size arguments must be 4" . PHP_EOL;
@@ -110,8 +110,8 @@ class Drawing {
                                 $output .= "-";
                             elseif($c == 0 || $c == $this->canvas_size[0] + 1)
                                 $output .= "|";
-                            elseif(isset($this->pixels[$c][$r]))
-                                $output .= $this->pixels[$c][$r];
+                            elseif(isset($this->canvas[$c][$r]))
+                                $output .= $this->canvas[$c][$r];
                             else
                                 $output .= " ";
                         }
